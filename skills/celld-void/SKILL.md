@@ -35,6 +35,25 @@ pnpm exec celld-void deploy \
 Después del primer deploy: `celld d1 migrations apply default <stage>` (la flota
 debe estar corriendo).
 
+## Setup
+
+Después de `void init`:
+
+```bash
+pnpm exec celld-void setup        # idempotente; solo agrega lo que falta
+pnpm exec celld-void setup --yes  # regenera sección/skill editadas, con backup
+```
+
+`setup` agrega una sección propia a `AGENTS.md` entre marcadores
+`<!-- celld-void:start -->` / `<!-- celld-void:end -->` (sin tocar la de
+Void), instala esta skill en `.agents/skills/`, `.claude/skills/` y/o
+`.commandcode/skills/` según el agente detectado, y crea placeholders sin
+pisar archivos existentes: `worker-exports.ts`, `wasm/`, `wasm.d.ts`,
+`container/`, `app.manifest.json` y `scripts/check-local.sh`. No agrega CI.
+
+Para crear desde cero: `pnpm exec celld-void create <dir>` (corre
+`pnpm create void` + `setup`; el directorio debe estar vacío).
+
 ## Bindings: los 12 de celld
 
 Declará los bindings custom en `void.config.ts` bajo `cloudflare`; Void los

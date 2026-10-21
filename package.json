@@ -1,6 +1,6 @@
 {
   "name": "celld-void",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Void adapter for celld: deploy Void apps on celld with D1, KV, R2, queues, cron, durable objects, workflows, facets, dynamic workers, wasm and containers.",
   "type": "module",
   "bin": {

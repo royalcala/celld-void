@@ -42,6 +42,49 @@ celld d1 migrations apply default <stage> \
   --bucket "$BUCKET" --endpoint "$ENDPOINT" --region auto
 ```
 
+## Setup de un proyecto Void
+
+`void init` hace el scaffold. `celld-void setup` lo complementa (no lo
+reemplaza) y se puede correr las veces que haga falta:
+
+```bash
+pnpm exec celld-void setup            # solo agrega lo que falta
+pnpm exec celld-void setup --yes      # regenera sección/skill editadas (con backup)
+pnpm exec celld-void setup --dir apps/list
+```
+
+Hace:
+
+- Agrega una sección `celld-void` a `AGENTS.md` entre marcadores
+  `<!-- celld-void:start -->` / `<!-- celld-void:end -->`. No toca la sección
+  de Void ni el resto del archivo.
+- Instala `skills/celld-void/SKILL.md` en el/los agentes detectados:
+  `.agents/skills/` (Codex/universal), `.claude/skills/` (Claude Code) y
+  `.commandcode/skills/` (Command Code). Si no detecta ninguno, deja AGENTS.md
+  y avisa.
+- Apunta a los docs de la versión instalada:
+  `node_modules/celld-void/docs/MAPPING.md` y `.../LAB.md`.
+- Crea, solo si faltan: `worker-exports.ts`, `wasm/` + `wasm.d.ts`,
+  `container/` (README), `app.manifest.json`, y `scripts/check-local.sh` +
+  `scripts.check` en `package.json`.
+- No crea `.github/` ni CI.
+
+Si editaste la sección o la skill, la corrida sin `--yes` las conserva y
+avisa; con `--yes` las regenera y deja `<archivo>.celld-void.bak`.
+
+## Create
+
+```bash
+pnpm exec celld-void create apps/new-app
+```
+
+Corre `pnpm create void <dir>` (o `--package-manager npm`) y después
+`celld-void setup`. El directorio debe estar vacío. No agrega GitHub Actions
+ni publica nada. Si el scaffold pregunta datos, respondelos en la terminal;
+para un proyecto ya inicializado usá `celld-void setup`.
+
+`--skip-scaffold` omite el scaffold y solo corre setup.
+
 ## Workflows, Facets y Dynamic Workers
 
 Void no los expone de forma nativa, pero el adapter los soporta con un entry
@@ -74,8 +117,9 @@ node --test
 ```
 
 Cubren la traducción del config real de Void (`rules`, assets, D1,
-workflows, migraciones, loaders), el rechazo de servicios no soportados y el
-staging.
+workflows, migraciones, loaders), el rechazo de servicios no soportados, el
+staging y `setup` (AGENTS.md nuevo/existente/idempotente, detección de agentes,
+skills, placeholders, `--yes` y no sobreescritura).
 
 ## Reglas
 
