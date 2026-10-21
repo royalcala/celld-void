@@ -1,0 +1,59 @@
+{
+  "name": "celld-void",
+  "version": "0.1.0",
+  "description": "Void adapter for celld: deploy Void apps on celld with D1, KV, R2, queues, cron, durable objects, workflows, facets, dynamic workers, wasm and containers.",
+  "type": "module",
+  "bin": {
+    "celld-void": "./bin/deploy.js"
+  },
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "files": [
+    "bin",
+    "src",
+    "templates",
+    "examples",
+    "skills",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md",
+    "SECURITY.md",
+    "docs"
+  ],
+  "scripts": {
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "peerDependencies": {
+    "void": ">=1.1.0",
+    "@cloudflare/workers-types": ">=4"
+  },
+  "peerDependenciesMeta": {
+    "void": {
+      "optional": true
+    },
+    "@cloudflare/workers-types": {
+      "optional": true
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "MIT",
+  "keywords": [
+    "celld",
+    "void",
+    "cloudflare",
+    "workers",
+    "adapter",
+    "wasm",
+    "durable-objects"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/royalcala/celld-void.git"
+  }
+}

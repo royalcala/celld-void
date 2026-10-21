@@ -1,0 +1,13 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1792529084113,
+      "tag": "20261020204444_wealthy_senator_kelly",
+      "breakpoints": true
+    }
+  ]
+}

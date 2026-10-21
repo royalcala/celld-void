@@ -1,0 +1,29 @@
+{
+  "name": "celld-void-example-list",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite dev",
+    "build": "vite build",
+    "prepare": "void prepare",
+    "typecheck": "tsc --noEmit",
+    "db:generate": "void db generate",
+    "db:migrate": "void db migrate",
+    "deploy:celld": "pnpm build && node ../../bin/deploy.js --project . --name list --bucket ${CELD_BUCKET:?set CELD_BUCKET} --endpoint ${R2_ENDPOINT:?set R2_ENDPOINT} --region auto"
+  },
+  "dependencies": {
+    "@cloudflare/containers": "0.3.7",
+    "@void/react": "1.1.11",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20261014.1",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "typescript": "^5.9.3",
+    "vite": "^8.3.4",
+    "void": "1.1.11"
+  }
+}

@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.void/
+.void-wrangler.jsonc
+.celld-void/
+.celld-void/
+.env
+.env.*
+*.log
+.DS_Store
+*.tgz

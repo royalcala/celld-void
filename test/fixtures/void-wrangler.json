@@ -1,0 +1,43 @@
+{
+  "name": "spike-void",
+  "main": "index.js",
+  "compatibility_date": "2026-02-24",
+  "compatibility_flags": ["nodejs_compat"],
+  "jsx_factory": "React.createElement",
+  "jsx_fragment": "React.Fragment",
+  "rules": [{ "type": "ESModule", "globs": ["**/*.js", "**/*.mjs"] }],
+  "assets": {
+    "binding": "ASSETS",
+    "not_found_handling": "none",
+    "run_worker_first": ["/**"],
+    "directory": "../client"
+  },
+  "vars": {},
+  "durable_objects": { "bindings": [] },
+  "workflows": [
+    {
+      "name": "wf",
+      "binding": "WF",
+      "class_name": "Wf",
+      "schedules": ["* * * * *"]
+    }
+  ],
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["Extra"] }],
+  "kv_namespaces": [{ "binding": "KV", "id": "kv" }],
+  "queues": { "producers": [], "consumers": [] },
+  "r2_buckets": [{ "binding": "STORAGE", "bucket_name": "bucket" }],
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "default",
+      "database_id": "local",
+      "migrations_dir": "../../migrations"
+    }
+  ],
+  "worker_loaders": [{ "binding": "LOADER", "limits": {} }],
+  "vectorize": [],
+  "hyperdrive": [],
+  "python_modules": { "exclude": ["**/*.pyc"] },
+  "dev": {},
+  "no_bundle": true
+}
