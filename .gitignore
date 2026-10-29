@@ -10,4 +10,10 @@ dist/
 .DS_Store
 *.tgz
 
-.commandcode/
+.commandcode/*
+!.commandcode/.gitignore
+!.commandcode/README.md
+!.commandcode/taste/
+!.commandcode/taste/**
+!.commandcode/skills/
+!.commandcode/skills/**
